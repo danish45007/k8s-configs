@@ -1,0 +1,17 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+    labels:
+        app: greeting-app-hpa
+        version: v1
+    name: greeting-app-hpa
+spec:
+    # scaleTargetRef:
+    # ...
+
+    scaleTargetRef:
+        apiVersion: apps/v1
+        kind: Deployment
+        name: greeting-app
+    minReplicas: 1
+    maxReplicas: 3
